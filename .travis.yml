@@ -25,8 +25,8 @@ matrix:
 
 script:
         - |
-             mkdir array-rverse/cpp/build
-             cd array-rverse/cpp/build
+             mkdir -p array-reverse/cpp/build
+             cd array-reverse/cpp/build
              CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake -DCOVERAGE=1 ..
              cmake --build .
              ctest -VV
