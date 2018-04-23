@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 2.6)
 project(basic_test)
 include(gtest.cmake)
+include(CodeCoverage.cmake)
+
+APPEND_COVERAGE_COMPILER_FLAGS()
 
 # GTest needs threading support
 find_package (Threads)
