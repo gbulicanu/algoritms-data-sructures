@@ -2,6 +2,12 @@ dist: trusty
 sudo: false
 language: cpp
 
+# Use https (public access) instead of git for git-submodules.
+# This modifies only Travis-CI behavior!
+# disable the default submodule logic
+git:
+  submodules: false
+
 addons:
   apt:
     sources:
@@ -11,16 +17,14 @@ addons:
 
 before_install:
   - pip install --user cpp-coveralls
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
 
 matrix:
     include:
         - os: linux
           compiler: gcc
         - os: linux
-          compiler: clang
-        - os: osx
-          compiler: gcc
-        - os: osx
           compiler: clang
 
 script:
