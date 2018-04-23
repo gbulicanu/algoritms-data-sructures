@@ -36,4 +36,5 @@ script:
              ctest -VV
 
 after_success:
+  - coveralls --help
   - coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
