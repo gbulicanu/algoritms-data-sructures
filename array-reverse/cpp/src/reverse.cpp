@@ -4,5 +4,9 @@
 using namespace std;
 
 void reverse(int *arr, int N){
-    cout << "";
+    if(N == 0)
+    {
+        arr = {};
+        return;
+    }
 }
