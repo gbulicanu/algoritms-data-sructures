@@ -37,4 +37,4 @@ script:
 
 after_success:
   - coveralls --help
-  - coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
+  - coveralls --root . -i ../src
