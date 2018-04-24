@@ -37,4 +37,4 @@ script:
 
 after_success:
   - coveralls --help
-  - coveralls --root . -i ../src
+  - coveralls -i ../src
