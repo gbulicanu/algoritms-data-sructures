@@ -27,11 +27,13 @@ enable_testing()
 ################################
 # Add test cpp file
 add_executable( runUnitTests src/reverse.cpp test/reverse.cpp )
-# Link test executable against gtest & gtest_main
-target_link_libraries(runUnitTests gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
-add_test( runUnitTests runUnitTests )
 
 if (COVERAGE)
     target_compile_options(runUnitTests PRIVATE --coverage)
-    target_link_libraries(runUnitTests PRIVATE --coverage)
+    target_link_librarie..s(runUnitTests PRIVATE --coverage gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
+else()
+    # Link test executable against gtest & gtest_main
+    target_link_libraries(runUnitTests gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
 endif()
+
+add_test( runUnitTests runUnitTests )

@@ -31,12 +31,11 @@ script:
         - |
              mkdir -p array-reverse/cpp/build
              cd array-reverse/cpp/build
-             CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake -DCOVERAGE=1 -D"CMAKE_CXX_FLAGS=-g -O2 -w -fprofile-arcs -ftest-coverage" -D"CMAKE_C_FLAGS=-g -O2 -w -fprofile-arcs -ftest-coverage" ..
+             CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake -DCOVERAGE=1 -D"CMAKE_CXX_FLAGS=-g -O2 -w -fprofile-arcs -ftest-coverage" -D"CMAKE_C_FLAGS=-g -O2 -w -fprofile-arcs -ftest-coverage" -DCMAKE_BUILD_TYPE=Debug ..
              cmake --build .
-             ctest -VV
              ./runUnitTests
 
 after_success:
   - coveralls --help
   - ls
-  - coveralls -i ../src -e /usr -e ../../../gtest -E ".*googletest.*" -E ".*CMake.*"
+  - coveralls --root . -i ../src -e /usr -e ../../../gtest -E ".*googletest.*" -E ".*CMake.*"
