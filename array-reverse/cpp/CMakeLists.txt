@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.6)
 project(basic_test)
 include(gtest.cmake)
 
-set(COVERAGE_EXCLUDES 'gtest' 'gtest/*' '/usr/*')
+set(COVERAGE_EXCLUDES 'gtest' 'gtest/*' 'usr/*')
 
 include(CodeCoverage.cmake)
 

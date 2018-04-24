@@ -13,6 +13,7 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
     packages:
+      - lcov
       - g++-6
 
 before_install:
