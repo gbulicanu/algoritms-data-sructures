@@ -17,7 +17,6 @@ addons:
       - g++-6
 
 before_install:
-  #- pip install --user cpp-coveralls
   - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
   - git submodule update --init --recursive
 
@@ -37,10 +36,10 @@ script:
              make coverage
 
 after_success:
-  #- coveralls --root . -i ../src -e /usr -e ../../../gtest -E ".*googletest.*" -E ".*CMake.*"
   - lcov --directory . --capture --output-file coverage.info # capture coverage info
   - lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter out system
   - lcov --remove coverage.info 'gtest/*' --output-file coverage.info # filter out gtest
+  - lcov --remove coverage.info 'test/*' --output-file coverage.info # filter out test
   - lcov --list coverage.info #debug info
   # Uploading report to CodeCov
   - bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
