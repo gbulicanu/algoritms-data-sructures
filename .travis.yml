@@ -38,4 +38,5 @@ script:
 
 after_success:
   - coveralls --help
+  - ls
   - coveralls -i ../src -e /usr -e ../../../gtest -E ".*googletest.*" -E ".*CMake.*"
