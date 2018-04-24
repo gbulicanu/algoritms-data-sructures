@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 2.6)
 project(basic_test)
 include(gtest.cmake)
+
+set(COVERAGE_EXCLUDES 'gtest' 'gtest/*' '/usr/*')
+
 include(CodeCoverage.cmake)
 
 APPEND_COVERAGE_COMPILER_FLAGS()
@@ -11,6 +14,8 @@ find_package (Threads)
 include_directories(src)
 
 SET(COVERAGE OFF CACHE BOOL "Coverage")
+
+SETUP_TARGET_FOR_COVERAGE(NAME coverage EXECUTABLE runUnitTests)
 
 ################################
 # GTest
@@ -30,7 +35,7 @@ add_executable( runUnitTests src/reverse.cpp test/reverse.cpp )
 
 if (COVERAGE)
     target_compile_options(runUnitTests PRIVATE --coverage)
-    target_link_librarie..s(runUnitTests PRIVATE --coverage gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
+    target_link_libraries(runUnitTests PRIVATE --coverage gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
 else()
     # Link test executable against gtest & gtest_main
     target_link_libraries(runUnitTests gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
