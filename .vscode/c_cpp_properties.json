@@ -30,8 +30,8 @@
                 "/usr/local/include",
                 "${workspaceFolder}",
                 "${workspaceFolder}/array-reverse/cpp/src",
-                "${workspaceFolder}/libs/googletest-release-1.8.0/googletest/include",
-                "${workspaceFolder}/libs/googletest-release-1.8.0/googlemock/include"
+                "${workspaceFolder}/gtest/googletest/include",
+                "${workspaceFolder}/gtest/googlemock/include"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",
